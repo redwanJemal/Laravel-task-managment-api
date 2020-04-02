@@ -25,7 +25,7 @@ Route::middleware('auth:api')->get('auth/logout', 'AuthController@logout');
 Route::middleware('auth:api')->post('department/create', 'DepartmentsController@store');
 Route::middleware('auth:api')->post('department/update/{department}', 'DepartmentsController@update');
 Route::middleware('auth:api')->get('department/{department}', 'DepartmentsController@show');
-Route::middleware('auth:api')->get('department/users/{department}', 'DepartmentsController@users');
+Route::middleware('auth:api')->get('department/{department}/users', 'DepartmentsController@users');
 Route::middleware('auth:api')->get('departments', 'DepartmentsController@index');
 Route::middleware('auth:api')->delete('department/delete/{department}', 'DepartmentsController@destroy');
 
@@ -43,6 +43,8 @@ Route::middleware($middleware)->get('users','UsersController@users');
 Route::middleware($middleware)->get('user/{user}/my_tasks','UsersController@my_tasks');
 Route::middleware($middleware)->get('user/{user}/completed_tasks','UsersController@completed_tasks');
 Route::middleware($middleware)->get('user/{user}/in_completed_tasks','UsersController@in_completed_tasks');
+Route::middleware($middleware)->post('user/{user}/task/{task}/complete','UsersController@complete_task');
+Route::middleware($middleware)->post('user/{user}/task/{task}/start','UsersController@start_task');
 
 
 // Manager

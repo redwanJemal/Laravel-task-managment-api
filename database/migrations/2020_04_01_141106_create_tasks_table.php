@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->integer('created_by');
             $table->integer('assigned_user')->nullable();
             $table->integer('status')->default(1); // created
+            $table->string('doc_path')->nullable();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->timestamp('started_date')->nullable();
