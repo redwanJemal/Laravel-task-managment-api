@@ -29,8 +29,12 @@ class TasksController extends Controller
             'title' => 'required',
             'description' => 'required',
         ]);
+
+        $path = isset($request['file'])?$request->file('file')->store('uploads'):null;
+
         $input = $request->all();
         $input['created_by'] = $request->user()->id;
+        $input['doc_path'] = $path;
         $projectManager = User::projectManager()->where('id','=',$request->user()->id)->first();
         if($projectManager){
             $task = Task::create($input);
